@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Invitation | Evelyn & Raymond</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-image: url("assets/1.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .top-title {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.3rem;
+      color: whitesmoke;
+      font-weight: bold;
+      text-align: center;
+      backdrop-filter: blur(4px);
+      z-index: 20;
+      animation: fadeIn 1s ease-in forwards;
+      opacity: 0;
+    }
+
+    .overlay-card {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 40px 40px 0 0;
+      padding: 1rem;
+      box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+      color: #000;
+      z-index: 9;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      margin: 1.2rem 0;
+    }
+
+    h4 {
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      display: inline-block;
+      color: cornsilk;
+    }
+
+    .to-section {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: black;
+      line-height: 1.5;
+    }
+
+    .custom-line {
+      border: none;
+      border-top: 2px solid #ccc;
+      width: 80%;
+      margin: 1rem auto;
+    }
+
+    .open-btn-wrapper {
+      position: fixed;
+      bottom: calc(21rem);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 11;
+      animation: fadeIn 1.2s ease-in forwards, wiggle 1.5s infinite ease-in-out;
+      opacity: 0;
+    }
+
+    .open-btn-wrapper button {
+      background-color: #fff;
+      border: 1px solid #333;
+      padding: 0.6rem 1.8rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .open-btn-wrapper button:hover {
+      background-color: #f3f3f3;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes wiggle {
+      0%, 100% {
+        transform: translateX(-50%) rotate(0deg);
+      }
+      25% {
+        transform: translateX(-50%) rotate(1.5deg);
+      }
+      50% {
+        transform: translateX(-50%) rotate(-1.5deg);
+      }
+      75% {
+        transform: translateX(-50%) rotate(1deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2 class="top-title">Wedding Invitation</h2>
+
+  <!-- Tombol Mengambang -->
+  <div class="open-btn-wrapper">
+    <button onclick="location.href='about.html'">
+      <i class="ri-mail-open-line"></i> Open Invitation
+    </button>
+  </div>
+
+  <div class="overlay-card">
+    <h1>Atik <br>&<br> Ikbal</h1>
+    <h4>Rabu, 18 Juni 2025</h4>
+    <hr class="custom-line">
+    <div class="to-section">
+      Yang Terhormat<br />
+      <strong id="guest-name">Tamu Undangan</strong>
+    </div>
+  </div>
+
+  <!-- Script untuk mengganti nama -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get("to");
+
+    if (guestName) {
+      const guestNameElem = document.getElementById("guest-name");
+      guestNameElem.innerText = decodeURIComponent(guestName);
+    }
+  });
+</script>
+</body>
+</html>

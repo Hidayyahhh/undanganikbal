@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Generator Tautan Undangan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f8f8f8;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.5rem 1.5rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .output {
+      margin-top: 2rem;
+    }
+
+    .output a {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Generator Tautan Undangan</h2>
+  <p>Masukkan daftar nama (satu per baris):</p>
+
+  <textarea id="names" placeholder="Contoh:\nMelissa\nBudi Santoso\nCitra Aulia"></textarea>
+  <br>
+  <button onclick="generateLinks()">Buat Tautan</button>
+
+  <div class="output" id="link-output"></div>
+
+  <script>
+    function generateLinks() {
+      const baseUrl = "https://yourdomain.com/index.html?to=";
+      const names = document.getElementById("names").value.trim().split("\n");
+      const output = document.getElementById("link-output");
+      output.innerHTML = ""; // bersihkan dulu
+
+      names.forEach(name => {
+        const encodedName = encodeURIComponent(name.trim());
+        const fullUrl = `${baseUrl}${encodedName}`;
+        const link = document.createElement("a");
+        link.href = fullUrl;
+        link.textContent = `Undangan untuk ${name}`;
+        link.target = "_blank";
+        output.appendChild(link);
+      });
+    }
+  </script>
+
+</body>
+</html>
